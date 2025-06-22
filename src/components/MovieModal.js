@@ -28,7 +28,7 @@ function MovieModal({ isOpen, movie, onClose }) {
                 
                 <div className="mb-4">
                   <h3 className="fs-5 fw-semibold text-dark mb-2">Сюжет</h3>
-                  <p className="text-secondary">{movie.plot}</p>
+                  <p className="text-secondary" style={{ whiteSpace: 'pre-wrap' }}>{movie.plot}</p>
                 </div>
                 
                 <div className="mb-4">

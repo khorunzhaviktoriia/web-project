@@ -7,6 +7,7 @@ import LoginModal from './components/LoginModal.js';
 import QuizModal from './components/QuizModal.js';
 import ToastMessage from './components/ToastMessage.js';
 import MovieModal from './components/MovieModal.js'
+import Footer from './components/Footer.js';
 
 function App() { 
   const [isLoading, setIsLoading] = useState(true);
@@ -148,19 +149,24 @@ function App() {
 
   const quizQuestions = [
     {
-      question: "1",
-      options: ["1", "2", "3", "4"],
-      correctAnswer: "1"
+      question: "У якому фільмі головний герой носить червоний костюм і має дуже специфічне почуття гумору?",
+      options: ["Дедпул", " Людина-павук", "Барбі", "Тор"],
+      correctAnswer: "Дедпул"
     },
     {
-      question: "2",
-      options: ["1", "2", "3", "4"],
-      correctAnswer: "2"
+      question: " Як називається фільм, де чарівник зі шрамом на лобі вчився в Хогвартсі?",
+      options: ["Чарівник країни Оз", "Гаррі Поттер", "Володар перснів", "Аліса в країні див"],
+      correctAnswer: "Гаррі Поттер"
     },
     {
-      question: "3",
-      options: ["1", "2", "3", "4"],
-      correctAnswer: "3"
+      question: 'Як звали маленького зеленого майстра-джедая з "Зоряних війн"?',
+      options: ["Йода", "Дарт Вейдер", "Люк", "Обі-Ван"],
+      correctAnswer: "Йода"
+    },
+    {
+      question: 'У якому світі жила Барбі на початку фільму "Барбі" (2023)?',
+      options: ["В реальному світі", "У Кенленді", "У світі мрій", "У Барбіланді"],
+      correctAnswer: "У Барбіланді"
     }
   ];
 
@@ -228,6 +234,7 @@ function App() {
         movie={selectedMovie} 
         onClose={() => setIsModalOpen(false)} 
       />
+      <Footer />
     </div>
   );
 };
