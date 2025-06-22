@@ -6,7 +6,7 @@ import SectionForQuiz from './components/SectionForQuiz.js';
 import LoginModal from './components/LoginModal.js';
 import QuizModal from './components/QuizModal.js';
 import ToastMessage from './components/ToastMessage.js';
-import MovieModal from './components/MovieModal.js';
+import MovieModal from './components/MovieModal.js'
 
 function App() { 
   const [isLoading, setIsLoading] = useState(true);
@@ -190,7 +190,11 @@ function App() {
 
   return (
     <div className="min-vh-100 bg-light">
-      <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} setIsLoginModalOpen={setIsLoginModalOpen}/>
+      <Header 
+        searchTerm={searchTerm} 
+        setSearchTerm={setSearchTerm} 
+        setIsLoginModalOpen={setIsLoginModalOpen}
+      />
       <SectionForQuiz setIsQuizActive={setIsQuizActive} />
       <div className='container my-5'>
         <MovieGrid 
@@ -219,6 +223,11 @@ function App() {
         handleQuizAnswer={handleQuizAnswer} 
       />
       <ToastMessage show={showToast} message={toastMessage} />
+      <MovieModal 
+        isOpen={isModalOpen} 
+        movie={selectedMovie} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 };

@@ -29,7 +29,11 @@ input.form-control:focus {
 }
 
 .bg-pink {
-  background-color: #ce739d;
+  background-color: #e83e8c;
+}
+
+.bg-pink-for-modal {
+  background-color: #7b0d3df1;
 }
 
 
