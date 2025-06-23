@@ -25,6 +25,8 @@ function App() {
   const [isQuizActive, setIsQuizActive] = useState(false);
   const [currentQuizQuestion, setCurrentQuizQuestion] = useState(0);
   const [quizScore, setQuizScore] = useState(0);
+  const [selectedOption, setSelectedOption] = useState('');
+
 
   useEffect(function () {
     function fetchMovies(showToastOnUpdate = false) {
@@ -177,6 +179,7 @@ function App() {
 
     if (currentQuizQuestion < quizQuestions.length - 1) {
       setCurrentQuizQuestion(currentQuizQuestion + 1);
+      setSelectedOption('')
     } else {
       setToastMessage(`Тест пройдено! Твій рахунок: ${quizScore + (answer === quizQuestions[currentQuizQuestion].correctAnswer ? 1 : 0)}/${quizQuestions.length}`);
       setShowToast(true);
@@ -186,6 +189,7 @@ function App() {
         setIsQuizActive(false);
         setCurrentQuizQuestion(0);
         setQuizScore(0);
+        setSelectedOption('')
       }, 2000);
 
       setTimeout(function () {
@@ -227,6 +231,8 @@ function App() {
         currentQuizQuestion={currentQuizQuestion} 
         quizScore={quizScore} 
         handleQuizAnswer={handleQuizAnswer} 
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
       />
       <ToastMessage show={showToast} message={toastMessage} />
       <MovieModal 

@@ -49,5 +49,13 @@
     ]
   },
   "license": "ISC",
-  "devDependencies": {}
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khorunzhaviktoriia/web-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/khorunzhaviktoriia/web-project/issues"
+  },
+  "homepage": "https://github.com/khorunzhaviktoriia/web-project#readme"
 }

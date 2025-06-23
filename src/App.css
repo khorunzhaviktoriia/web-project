@@ -29,7 +29,7 @@ input.form-control:focus {
 }
 
 .bg-pink {
-  background-color: #e83e8c;
+  background-color: #e83e8c !important;
 }
 
 .bg-pink-for-modal {
@@ -38,6 +38,16 @@ input.form-control:focus {
 
 .bg-for-footer {
   background-color: #000000c1;
+}
+
+.form-check-input:checked {
+  background-color: #e83e8c !important;
+  border-color: #e83e8c !important;
+}
+
+.form-check-input:focus {
+  border-color: #e83e8c !important;
+  box-shadow: 0 0 0 0.25rem rgba(232, 62, 140, 0.5) !important;
 }
 
 
