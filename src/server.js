@@ -88,16 +88,51 @@ const movies = [
     actors: ["Дженніфер Лоренс", "Джош Гатчерсон", "Ліам Гемсворт", "Вуді Гаррельсон", "Елізабет Бенкс", "Ленні Кравіц", "Стенлі Туччі", "Дональд Сазерленд"],
     genre: ["Бойовик", "Наукова фантастика", "Антиутопія", "Драма"]
   },
+
+
 ];
 
-server.get('/movies', function (req, res) {
-  res.json(movies);
-});
 
 const users = [
   { username: 'john', password: 'password123' },
   { username: 'alice', password: 'password456' }
 ];
+
+const quotes = [
+  {
+    text: "Елементарно, мій дорогий Ватсон",
+    movie: "Пригоди Шерлока Холмса (Шерлок Холмс)"
+  },
+    {
+    text: "Я — король світу!",
+    movie: "Титанік (Леонардо Ді Капріо)"
+  },
+    {
+    text: "Ніколи не поспішайте. Ви пропустите найкращі частини в житті",
+    movie: "Навколо світу за вісімдесят днів"
+  },
+    {
+    text: "Лови момент. Ловіть момент, хлопці. Зробіть своє життя надзвичайним",
+    movie: "Товариство мертвих поетів (Джон Кітінг)"
+  },
+  {
+    text: "Тримай друзів близько, а ворогів ще ближче",
+    movie: "Хрещений батько, частина друга"
+  },
+  {
+    text: "Х'юстон, у нас проблема",
+    movie: "Аполлон-13"
+  },
+  {
+    text: "Той, хто шукає, знаходить",
+    movie: "В пошуках Немо"
+  },
+];
+
+server.get('/movies', function (req, res) {
+  res.json(movies);
+
+});
 
 function findUser(users, username, password) {
     for (let i = 0; i < users.length; i++) {
@@ -117,6 +152,11 @@ server.post('/login', function (req, res) {
   } else {
     return res.status(401).json({ success: false, error: 'Неправильний логін або пароль' });
   }
+});
+
+server.get('/quote', function (req, res) {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  res.json(quotes[randomIndex]);
 });
 
 server.listen(PORT, () => {

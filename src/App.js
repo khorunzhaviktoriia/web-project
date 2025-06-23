@@ -8,6 +8,7 @@ import QuizModal from './components/QuizModal.js';
 import ToastMessage from './components/ToastMessage.js';
 import MovieModal from './components/MovieModal.js'
 import Footer from './components/Footer.js';
+import Quote from './components/Quote.js';
 
 function App() { 
   const [isLoading, setIsLoading] = useState(true);
@@ -26,11 +27,13 @@ function App() {
   const [currentQuizQuestion, setCurrentQuizQuestion] = useState(0);
   const [quizScore, setQuizScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
+  const [quote, setQuote] = useState({ text: '', movie: '' });
 
 
   useEffect(function () {
     function fetchMovies(showToastOnUpdate = false) {
       setIsLoading(true);
+      console.log('Check')
 
       fetch('http://localhost:9999/movies')
         .then(function (response) {
@@ -198,6 +201,44 @@ function App() {
     }
   }
 
+  useEffect(function () {
+    function fetchQuote(showToastOnUpdate) {
+      setIsLoading(true);
+
+      fetch('http://localhost:9999/quote')
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Не вдалося отримати цитату');
+          }
+          return response.json();
+        })
+        .then(function (data) {
+          setQuote(data);
+        })
+        .catch(function (error) {
+          console.error('Помилка отримання цитати:', error);
+          setToastMessage('Не вдалося завантажити цитату');
+          setShowToast(true);
+          setTimeout(function () {
+            setShowToast(false);
+          }, 3000);
+        })
+        .finally(function () {
+          setIsLoading(false);
+        });
+    }
+
+    fetchQuote(true);
+
+    const intervalId = setInterval(function () {
+      fetchQuote(false);
+    }, 30000);
+
+    return function () {
+      clearInterval(intervalId);
+    };
+  }, []);
+
   return (
     <div className="min-vh-100 bg-light">
       <Header 
@@ -205,8 +246,12 @@ function App() {
         setSearchTerm={setSearchTerm} 
         setIsLoginModalOpen={setIsLoginModalOpen}
       />
-      <SectionForQuiz setIsQuizActive={setIsQuizActive} />
+      <SectionForQuiz setIsQuizActive={setIsQuizActive} /> 
       <div className='container my-5'>
+        <Quote
+          isLoading={isLoading}
+          quote={quote}      
+        />
         <MovieGrid 
           movies={filteredMovies} 
           isLoading={isLoading} 
