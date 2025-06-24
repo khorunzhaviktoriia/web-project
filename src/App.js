@@ -184,9 +184,6 @@ function App() {
 
       fetch('http://localhost:9999/quote')
         .then(function (response) {
-          if (!response.ok) {
-            throw new Error('Не вдалося отримати цитату');
-          }
           return response.json();
         })
         .then(function (data) {
