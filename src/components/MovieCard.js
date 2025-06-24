@@ -1,8 +1,8 @@
-const MovieCard = ({ movie, onSelect }) => {
+function MovieCard ({ movie, onSelect }) {
 
   return (
     <div className="col">
-      <div className="card shadow">
+      <div className="card shadow movie-card">
         <div className="position-relative" style={{ height: '430px' }}>
           <img 
             src={movie.poster} 

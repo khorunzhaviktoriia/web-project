@@ -39,9 +39,6 @@ function App() {
 
       fetch('http://localhost:9999/movies')
         .then(function (response) {
-          if (!response.ok) {
-            throw new Error('Не вийшло отримати дані з сервера');
-          }
           return response.json();
         })
 
@@ -75,7 +72,7 @@ function App() {
     fetchMovies(true);
 
     const intervalId = setInterval(function () {
-      fetchMovies(false);
+      fetchMovies();
     }, 30000);
     
     return function () {
@@ -216,20 +213,22 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-  fetch('http://localhost:9999/quiz')
-    .then((response) => response.json())
-    .then((data) => {
-      setQuizQuestions(data);
-    })
-    .catch((error) => {
-      console.error('Помилка завантаження квізу:', error);
-      setToastMessage('Не вдалося завантажити питання для квізу');
-      setShowToast(true);
-      setTimeout(function () {
-        setShowToast(false);
-      }, 3000);
-    });
+  useEffect(function () {
+    fetch('http://localhost:9999/quiz')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        setQuizQuestions(data);
+      })
+      .catch(function (error) {
+        console.error('Помилка завантаження квізу:', error);
+        setToastMessage('Не вдалося завантажити питання для квізу');
+        setShowToast(true);
+        setTimeout(function () {
+          setShowToast(false);
+        }, 3000);
+      });
   }, []);
 
   return (
