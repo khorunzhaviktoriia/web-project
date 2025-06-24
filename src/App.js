@@ -27,9 +27,10 @@ function App() {
   const [currentQuizQuestion, setCurrentQuizQuestion] = useState(0);
   const [quizScore, setQuizScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
-  const [quote, setQuote] = useState({ text: '', movie: '' });
+  const [quote, setQuote] = useState([]);
   const [quizQuestions, setQuizQuestions] = useState([]);
- 
+  const [searchInput, setSearchInput] = useState('');
+
 
   useEffect(function () {
     function fetchMovies(showToastOnUpdate = false) {
@@ -237,6 +238,8 @@ function App() {
         searchTerm={searchTerm} 
         setSearchTerm={setSearchTerm} 
         setIsLoginModalOpen={setIsLoginModalOpen}
+        setSearchInput={setSearchInput}
+        searchInput={searchInput}
       />
       <SectionForQuiz setIsQuizActive={setIsQuizActive} /> 
       <div className='container my-5'>

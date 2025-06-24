@@ -1,4 +1,4 @@
-function Header({searchTerm, setSearchTerm, setIsLoginModalOpen}) {
+function Header({searchTerm, setSearchTerm, setIsLoginModalOpen, setSearchInput, searchInput}) {
   return (
     <header className="bg-white shadow fixed-top w-100">
       <div className="container py-3 d-flex align-items-center justify-content-between">
@@ -17,8 +17,8 @@ function Header({searchTerm, setSearchTerm, setIsLoginModalOpen}) {
             type="text"
             placeholder="Пошук..."
             className="form-control py-2 px-4 rounded-pill"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
             <img
               className="position-absolute"
@@ -31,6 +31,7 @@ function Header({searchTerm, setSearchTerm, setIsLoginModalOpen}) {
                 right: "8px",
                 cursor: "pointer"
               }}
+              onClick={() => setSearchTerm(searchInput)}
             />
         </div>
         
