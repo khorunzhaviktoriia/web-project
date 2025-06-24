@@ -13,6 +13,7 @@ function Header({searchTerm, setSearchTerm, setIsLoginModalOpen}) {
         
         <div className="w-50 position-relative me-2">
           <input
+            id="search-input"
             type="text"
             placeholder="Пошук..."
             className="form-control py-2 px-4 rounded-pill"

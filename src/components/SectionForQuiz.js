@@ -13,7 +13,7 @@ function SectionForQuiz({ setIsQuizActive }) {
       />
       
       <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center p-3 z-2">
-        <div className="text-white text-break" style={{ maxWidth: '550px' }}>
+        <div className="text-white" style={{ maxWidth: '550px' }}>
           <h2 className="fs-2 fw-bold mb-3">Відкрий світ неймовірного кіно</h2>
           <p className="fs-5 mb-4">Занурся у нашу добірку найкращих фільмів з усього світу — від культової класики до сучасних хітів, що не залишать байдужим.</p>
           <button 

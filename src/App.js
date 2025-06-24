@@ -28,12 +28,13 @@ function App() {
   const [quizScore, setQuizScore] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [quote, setQuote] = useState({ text: '', movie: '' });
-
+  const [quizQuestions, setQuizQuestions] = useState([]);
+ 
 
   useEffect(function () {
     function fetchMovies(showToastOnUpdate = false) {
       setIsLoading(true);
-      console.log('Check')
+      console.log('Check fetchMovies')
 
       fetch('http://localhost:9999/movies')
         .then(function (response) {
@@ -152,29 +153,6 @@ function App() {
     }
   }
 
-  const quizQuestions = [
-    {
-      question: "У якому фільмі головний герой носить червоний костюм і має дуже специфічне почуття гумору?",
-      options: ["Дедпул", " Людина-павук", "Барбі", "Тор"],
-      correctAnswer: "Дедпул"
-    },
-    {
-      question: " Як називається фільм, де чарівник зі шрамом на лобі вчився в Хогвартсі?",
-      options: ["Чарівник країни Оз", "Гаррі Поттер", "Володар перснів", "Аліса в країні див"],
-      correctAnswer: "Гаррі Поттер"
-    },
-    {
-      question: 'Як звали маленького зеленого майстра-джедая з "Зоряних війн"?',
-      options: ["Йода", "Дарт Вейдер", "Люк", "Обі-Ван"],
-      correctAnswer: "Йода"
-    },
-    {
-      question: 'У якому світі жила Барбі на початку фільму "Барбі" (2023)?',
-      options: ["В реальному світі", "У Кенленді", "У світі мрій", "У Барбіланді"],
-      correctAnswer: "У Барбіланді"
-    }
-  ];
-
   function handleQuizAnswer(answer) {
     if (answer === quizQuestions[currentQuizQuestion].correctAnswer) {
       setQuizScore(quizScore + 1);
@@ -193,7 +171,7 @@ function App() {
         setCurrentQuizQuestion(0);
         setQuizScore(0);
         setSelectedOption('')
-      }, 50000);
+      }, 3000);
 
       setTimeout(function () {
         setIsQuizActive(false);
@@ -204,6 +182,7 @@ function App() {
   useEffect(function () {
     function fetchQuote() {
       setIsLoading(true);
+      console.log('Check fetchQuote')
 
       fetch('http://localhost:9999/quote')
         .then(function (response) {
@@ -219,9 +198,6 @@ function App() {
           console.error('Помилка отримання цитати:', error);
           setToastMessage('Не вдалося завантажити цитату');
           setShowToast(true);
-          setTimeout(function () {
-            setShowToast(false);
-          }, 3000);
         })
         .finally(function () {
           setIsLoading(false);
@@ -237,6 +213,22 @@ function App() {
     return function () {
       clearInterval(intervalId);
     };
+  }, []);
+
+  useEffect(() => {
+  fetch('http://localhost:9999/quiz')
+    .then((response) => response.json())
+    .then((data) => {
+      setQuizQuestions(data);
+    })
+    .catch((error) => {
+      console.error('Помилка завантаження квізу:', error);
+      setToastMessage('Не вдалося завантажити питання для квізу');
+      setShowToast(true);
+      setTimeout(function () {
+        setShowToast(false);
+      }, 3000);
+    });
   }, []);
 
   return (
