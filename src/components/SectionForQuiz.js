@@ -9,12 +9,11 @@ function SectionForQuiz({ setIsQuizActive }) {
       <img 
         src="/images/image-for-quiz.jpg" 
         alt="Featured movies" 
-        className="w-100 h-100 object-fit-cover"
-        style={{ height: '20rem' }}
+        className="w-100 h-100"
       />
       
-      <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center z-20 p-4 z-2">
-        <div className="text-white" style={{ maxWidth: '36rem' }}>
+      <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center p-3 z-2">
+        <div className="text-white text-break" style={{ maxWidth: '550px' }}>
           <h2 className="fs-2 fw-bold mb-3">Відкрий світ неймовірного кіно</h2>
           <p className="fs-5 mb-4">Занурся у нашу добірку найкращих фільмів з усього світу — від культової класики до сучасних хітів, що не залишать байдужим.</p>
           <button 

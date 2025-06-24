@@ -193,7 +193,7 @@ function App() {
         setCurrentQuizQuestion(0);
         setQuizScore(0);
         setSelectedOption('')
-      }, 2000);
+      }, 50000);
 
       setTimeout(function () {
         setIsQuizActive(false);
@@ -202,7 +202,7 @@ function App() {
   }
 
   useEffect(function () {
-    function fetchQuote(showToastOnUpdate) {
+    function fetchQuote() {
       setIsLoading(true);
 
       fetch('http://localhost:9999/quote')

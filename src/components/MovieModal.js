@@ -8,9 +8,15 @@ function MovieModal({ isOpen, movie, onClose }) {
           <div className="modal-body position-relative p-0">
             <button 
               onClick={onClose}
-              className="btn position-absolute top-0 end-0 m-3 shadow"
+              className="btn position-absolute top-0 end-0 m-3 shadow rounded-pill"
             >
-              Вийти
+              <img
+                className="mb-1"
+                src="/images/exit.svg"
+                alt="Exit"
+                width="15"
+                height="15"
+              />
             </button>
             
             <div className="row">

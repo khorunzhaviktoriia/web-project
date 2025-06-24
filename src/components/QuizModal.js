@@ -12,7 +12,13 @@ function QuizModal({ isOpen, onClose, quizQuestions, currentQuizQuestion, quizSc
                 onClick={onClose}
                 className="btn text-muted"
               >
-                Вийти
+                <img
+                  className="mb-1"
+                  src="/images/exit.svg"
+                  alt="Exit"
+                  width="15"
+                  height="15"
+                />
               </button>
             </div>
             

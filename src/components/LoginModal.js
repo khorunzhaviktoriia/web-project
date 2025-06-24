@@ -2,7 +2,7 @@ function LoginModal({ isOpen, onClose, username, setUsername, password, setPassw
   if (!isOpen) return null;
 
   return (
-    <div className="modal fade show d-block" tabIndex={-1} style={{ backgroundColor: 'rgba(0,0,0,0.75)' }}>
+    <div className="modal fade show d-block" style={{ backgroundColor: 'rgba(0,0,0,0.75)' }}>
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content rounded shadow-lg">
           <div className="modal-body p-4">
@@ -12,7 +12,13 @@ function LoginModal({ isOpen, onClose, username, setUsername, password, setPassw
                 onClick={onClose}
                 className="btn text-muted"
               >
-                Повернутись
+                <img
+                  className="mb-1"
+                  src="/images/exit.svg"
+                  alt="Exit"
+                  width="15"
+                  height="15"
+                />
               </button>
             </div>
             
@@ -64,7 +70,7 @@ function LoginModal({ isOpen, onClose, username, setUsername, password, setPassw
             </form>
                         
             <p className="text-center mt-4 text-muted">
-              Немає облікового запису?{' '}
+              Немає облікового запису?
               <a href="#" className="text-pink text-decoration-none">Зареєструватися</a>
             </p>
           </div>
